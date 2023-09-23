@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@300;700;900&display=swap');
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #19375b;
+    width: 100vw;
+    height: 100vh;
+    font-size: 1em;
+    color: #a7bfdc;
+}
+.container{
+    width: 50vw;
+    height: 95vh;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.stats , .tools{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: linear-gradient(#061423 , #0d1f32);
+    border-radius: 20px;
+}
+.toolsplayer i:nth-child(odd){
+    color: #febf14;
+}
+.stats{
+    margin-top: 20px;
+}
+.reset ,#btcolse i{
+    cursor: pointer;
+}
+.cells{
+    display: flex;
+}
+.cell{
+    width:15vw;
+    height:18vh;
+    background-color: #0d1f32;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(52, 152, 219, 0.5);
+    cursor: pointer;
+    color: #a7bfdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vh;
+}
+
+.player,.draws{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+label{
+    font-weight: 700;
+    font-size: 0.7em;
+}
+.stats span{
+    color: #febf14;
+}
+
+#winingdad{
+    
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    display: none;
+    
+}
+#message{
+    position: absolute;
+    height: 30%;
+    min-height: 300px;
+    width: 100%;
+    background-color: #061423;
+    z-index: 2;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: #19375b 1px solid;
+    border-bottom: #19375b 1px solid;
+    box-shadow: 0 10px 20px black;
+}
+#btcolse{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+   
+
+}
+h2{
+    color: #febf14;
+    
+}
+#winmessage{
+ text-align: center;
+}
+.turn{
+    width: 30%;
+    height: 50%;
+    background-color: #a7bfdc;
+    position: relative;
+   display: flex;
+   align-items: center;
+   border-radius: 30px;
+   box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5) , inset 0 -5px 15px rgba(255, 255, 255, 0.5);
+
+}
+#robot , #friend{
+    padding: 5px 10px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}    
+#after{
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #febf14;
+   border-radius: 30px;
+   transition: all 0.3s;
+}
+@media  screen and (max-width:825px){
+    .cell{
+        width:15vw;
+        height:14vh;
+}
+}
+@media  screen and (max-width:550px){
+    .cell{
+        width:23vw;
+        height:16vh;
+        font-size: 5vh;
+        }
+        .container{
+            width: 80vw;
+            height: 90vh;}
+    }
+
+@media  screen and (max-width:420px){
+    .cell{
+        width:29vw;
+        height:12vh;
+        font-size: 8vh;
+        margin: 5px;
+        }
+        .container{
+            width: 95vw;
+            height: 95vh;}}
+

@@ -52,7 +52,9 @@ friendbtn.addEventListener('click',function(){
 })
 robotbtn.addEventListener('click',function(){
     if(usedcless.length==0){
-    after.style.left='0';}
+    after.style.left='0';
+    aitest=true;}
+    
 })
 
 
@@ -151,8 +153,8 @@ function ai(){
         cells[ramdom].innerHTML=player2.Symbol;
         player2.played.push(ramdom);
         setTimeout(checkwin ,500,player2);
-        o.style.color='#febf14';
-        x.style.color='#a7bfdc';
+        x.style.color='#febf14';
+        o.style.color='#a7bfdc';
         turn=true;
      
      }

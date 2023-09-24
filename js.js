@@ -22,6 +22,7 @@ let friendbtn=document.getElementById('friend');
     [0,3,6],
     [1,4,7],
     [2,5,8]
+    
  ]
 
 let player1={
@@ -36,24 +37,43 @@ let player2={
 }
 let drawtest=true;
 let turn = true;
-let player1score=1;
-let player2score=1;
-let playersdraw=1;
+let player1score=0;
+let player2score=0;
+let playersdraw=0;
 ////// ai ///////
 let usedcless =[];
 let emptycless=[0,1,2,3,4,5,6,7,8];
 let aitest=true;
-
+let usedclessai=[];
+let mojode=0;
+////////////////
 friendbtn.addEventListener('click',function(){
     if(usedcless.length==0){
     after.style.left='50%';
     aitest=false;
+    /////تصفير الاحصائيات
+    player1score=0;
+    score1.innerHTML=player1score;
+    player2score=0;
+    score2.innerHTML=player2score;
+    playersdraw=0;
+    draw.innerHTML=playersdraw;
+    /////////
     }
 })
 robotbtn.addEventListener('click',function(){
     if(usedcless.length==0){
     after.style.left='0';
-    aitest=true;}
+    aitest=true;
+ /////تصفير الاحصائيات
+ player1score=0;
+ score1.innerHTML=player1score;
+ player2score=0;
+ score2.innerHTML=player2score;
+ playersdraw=0;
+ draw.innerHTML=playersdraw;
+ /////////
+    }
     
 })
 
@@ -92,17 +112,18 @@ wincombos.some(combo =>{
     if(combo.every(index => player.played.includes(index) )){
         drawtest=false;
         usedcless=[];
+        usedclessai=[];
        if(player==player1){
-        score1.innerHTML=player1score;
         player1score++;
+        score1.innerHTML=player1score;
         
         winingdad.style.display='flex';
         winmessage.innerHTML=player1.Symbol+' is the <br><h2>winner</h2>';
         
         }
         else {
-        score2.innerHTML=player2score;
         player2score++;
+        score2.innerHTML=player2score;
         winingdad.style.display='flex';
         winmessage.innerHTML=player2.Symbol+' is the <br><h2>winner</h2>';
         
@@ -110,8 +131,8 @@ wincombos.some(combo =>{
     }
 })
 if(player1.played.concat(player2.played).length==9 && drawtest==true ){
-     draw.innerHTML=playersdraw;
      playersdraw++;
+     draw.innerHTML=playersdraw;
      winingdad.style.display='flex';
      winmessage.innerHTML='It is a <h2>draw</h2>';
      
@@ -126,6 +147,7 @@ function resetf(){
     player1.played=[];
     player2.played=[];
     usedcless=[];
+    usedclessai=[];
     turn=true;
     drawtest=true;
     x.style.color='#febf14';
@@ -147,9 +169,47 @@ function ai(){
         break;
      }
      }
+     //////new ai     ويقطع عليك هذا لي يكمل خط الفوز /////////
+     for (var ii = 0; ii < wincombos.length; ii++) {
+        mojode=0;
+        for (var jj = 0; jj <wincombos[ii].length; jj++) {
+          if (player1.played.indexOf(wincombos[ii][jj]) !== -1) {
+            mojode++;
+            if(mojode==2){
+            for(let jjj=0;jjj<3;jjj++){
+            if (player1.played.indexOf(wincombos[ii][jjj]) === -1) {
+                if(!usedcless.includes(wincombos[ii][jjj])){
+                ramdom = wincombos[ii][jjj];
+                }  
+            }
+            }
+            }
+          }}}
+    
+
+    
+    
+    
+     for (var ii = 0; ii < wincombos.length; ii++) {
+        mojode=0;
+        for (var jj = 0; jj <wincombos[ii].length; jj++) {
+          if (usedclessai.indexOf(wincombos[ii][jj]) !== -1) {
+            mojode++;
+            if(mojode==2){
+            for(let jjj=0;jjj<3;jjj++){
+            if (usedclessai.indexOf(wincombos[ii][jjj]) == -1) {
+                if(!usedcless.includes(wincombos[ii][jjj])){
+                ramdom = wincombos[ii][jjj];
+                }  
+            }
+            }
+            }
+          }}}
+   //////////new ai end///////////////
      if(!usedcless.includes(ramdom)){
     usedcless.push(ramdom);
-        console.log(usedcless);
+    usedclessai.push(ramdom);
+        console.log(usedclessai);
         cells[ramdom].innerHTML=player2.Symbol;
         player2.played.push(ramdom);
         setTimeout(checkwin ,500,player2);
